@@ -112,12 +112,17 @@ function sortStack() {
   while (originalStack.top) {
     let elementToMove = originalStack.pop();
 
-    while (sortedStack.top && sortedStack.top.data > elementToMove) {
+    while (sortedStack.top && sortedStack.top.data < elementToMove) {
       originalStack.push(sortedStack.pop());
     }
     sortedStack.push(elementToMove);
   }
   console.log('the stack has been sorted:', display(sortedStack));
+
+  while (sortedStack.top) {
+    originalStack.push(sortedStack.pop());
+  }
+  console.log('original stack is', display(originalStack));
 
 }
 // console.log(sortStack());
@@ -252,4 +257,4 @@ customerLine.enqueue(8);
 customerLine.enqueue(9);
 customerLine.enqueue(10);
 
-console.log(bankLine(customerLine));
+// console.log(bankLine(customerLine));
